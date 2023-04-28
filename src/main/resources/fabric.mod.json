@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Flash",
-  "description": "Screenshot Flash!",
+  "description": "Flashes as you take a screenshot.",
   "authors": [
     "KrLite"
   ],
