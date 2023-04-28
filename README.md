@@ -1,8 +1,8 @@
-### <p align=right>[`→` Modrinth](https://modrinth.com/mod/fabric-api)</p>
+### <p align=right>[`→` Modrinth](https://modrinth.com/mod/flash)</p>
 
-# Example Mod
+# Flash
 
-This is an example mod.
+**Flash** adds a screenshot animation after you take one. If you need to, pressing `⌥ Left Alt (Left Option)` can clear the animation instantly.
 
 ## License
 
