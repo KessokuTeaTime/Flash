@@ -3,7 +3,6 @@ package net.krlite.flash;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.krlite.equator.input.Window;
 import net.krlite.equator.math.algebra.Curves;
 import net.krlite.equator.visual.animation.Animation;
 import net.krlite.equator.visual.color.AccurateColor;
@@ -11,7 +10,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.sound.PositionedSoundInstance;
-import net.minecraft.client.sound.SoundInstance;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.ScreenshotRecorder;
@@ -65,12 +63,6 @@ public class Flash implements ModInitializer {
 			drop = new Animation(0, 1, 620, Curves.TwoBasedExponential.IN);
 	private static IntBuffer screenshot = null;
 	private static int width, height;
-
-	static {
-		Window.Callbacks.Resize.EVENT.register(size -> {
-			clear();
-		});
-	}
 
 	@Override
 	public void onInitialize() {

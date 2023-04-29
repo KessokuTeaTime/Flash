@@ -1,13 +1,10 @@
 package net.krlite.flash.mixin;
 
-import net.krlite.equator.render.frame.FrameInfo;
 import net.krlite.flash.Flash;
 import net.krlite.flash.FlashRenderer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.RotationAxis;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -28,7 +25,7 @@ public class GameRendererMixin {
 	private void renderScreenshotFlash(float tickDelta, long startTime, boolean tick, CallbackInfo ci) {
 		if (Flash.available()) {
 			matrixStack.push();
-			matrixStack.translate(FrameInfo.scaled().w() / 2, FrameInfo.scaled().h() / 2, 0);
+			matrixStack.translate(MinecraftClient.getInstance().getWindow().getScaledWidth() / 2.0, MinecraftClient.getInstance().getWindow().getScaledHeight() / 2.0, 0);
 
 			FlashRenderer.render(matrixStack, Flash.screenshot());
 

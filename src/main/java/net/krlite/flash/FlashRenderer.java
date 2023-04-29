@@ -2,8 +2,8 @@ package net.krlite.flash;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.krlite.equator.math.algebra.Theory;
-import net.krlite.equator.render.frame.FrameInfo;
 import net.krlite.equator.visual.color.AccurateColor;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import org.joml.Matrix4f;
@@ -25,7 +25,7 @@ public class FlashRenderer {
 
 		RenderSystem.enableBlend();
 
-		float width = (float) FrameInfo.scaled().w(), height = (float) FrameInfo.scaled().h();
+		float width = MinecraftClient.getInstance().getWindow().getScaledWidth(), height = MinecraftClient.getInstance().getWindow().getScaledHeight();
 		float minWidth = width * (float) Theory.lerp(1, Flash.MIN_WIDTH, Flash.shrink()), minHeight = height * (float) Theory.lerp(1, Flash.MIN_HEIGHT, Flash.shrink());
 		float scalar = (float) Theory.lerp(1, Flash.MIN_SCALAR, Flash.shrink());
 
