@@ -6,6 +6,8 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.krlite.equator.math.algebra.Curves;
 import net.krlite.equator.visual.animation.Animation;
 import net.krlite.equator.visual.color.AccurateColor;
+import net.krlite.equator.visual.color.ColorConvertor;
+import net.krlite.equator.visual.color.Colorspace;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.option.KeyBinding;
@@ -31,6 +33,7 @@ public class Flash implements ModInitializer {
 	public static final String NAME = "Flash", ID = "flash";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ID);
 	public static final double MIN_WIDTH = 0.764, MIN_HEIGHT = 0.672, MIN_SCALAR = 0.875;
+	public static final double SPEED = 1, MIN_SPEED = 0.195;
 	public static final float BORDER = 1;
 	public static final KeyBinding CLEAR = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 			"key.flash.clear",
@@ -42,7 +45,16 @@ public class Flash implements ModInitializer {
 	public static class Input {
 		static void listenInput(MinecraftClient client) {
 			if (client == null) return;
+
 			if (CLEAR.wasPressed()) clear();
+
+			if (client.options.sneakKey.isPressed()) {
+				shrink.speed(MIN_SPEED);
+				drop.speed(MIN_SPEED);
+			} else {
+				shrink.speed(SPEED);
+				drop.speed(SPEED);
+			}
 		}
 	}
 
@@ -99,7 +111,8 @@ public class Flash implements ModInitializer {
 		if (MinecraftClient.getInstance().world != null) {
 			Vec3d color = MinecraftClient.getInstance().world.getSkyColor(MinecraftClient.getInstance().gameRenderer.getCamera().getBlockPos().toCenterPos(), 0);
 			float[] hsb = Color.RGBtoHSB((int) (color.x * 255), (int) (color.y * 255), (int) (color.z * 255), null);
-			return AccurateColor.fromHSB(hsb[0], hsb[1], 1 - hsb[2], 1);
+			hsb[2] = 1 - hsb[2];
+			return new AccurateColor(Colorspace.HSV, ColorConvertor.floatToDouble(hsb), 1);
 		}
 		return AccurateColor.WHITE;
 	}
