@@ -6,7 +6,7 @@ import net.krlite.equator.visual.color.AccurateColor;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
-import org.joml.Matrix4f;
+import net.minecraft.util.math.Matrix4f;
 import org.lwjgl.opengl.GL11;
 
 import java.nio.IntBuffer;
@@ -37,7 +37,7 @@ public class FlashRenderer {
 		Matrix4f matrix = matrixStack.peek().getPositionMatrix();
 
 		// Background
-		RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+		RenderSystem.setShader(GameRenderer::getPositionColorShader);
 
 		builder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
 
@@ -46,10 +46,10 @@ public class FlashRenderer {
 		color(builder, matrix, minWidth / 2 + Flash.BORDER, height / 2 + Flash.BORDER, borderColor);	// Bottom right
 		color(builder, matrix, width / 2 + Flash.BORDER, -(minHeight / 2 + Flash.BORDER), borderColor);	// Top right
 
-		BufferRenderer.drawWithGlobalProgram(builder.end());
+		BufferRenderer.drawWithShader(builder.end());
 
 		RenderSystem.disableCull();
-		RenderSystem.setShader(GameRenderer::getPositionTexColorProgram);
+		RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
 		RenderSystem.setShaderTexture(0, textureId);
 
 		builder.begin(VertexFormat.DrawMode.TRIANGLE_STRIP, VertexFormats.POSITION_TEXTURE_COLOR);
@@ -70,7 +70,7 @@ public class FlashRenderer {
 			);	// Right
 		}
 
-		BufferRenderer.drawWithGlobalProgram(builder.end());
+		BufferRenderer.drawWithShader(builder.end());
 		RenderSystem.enableCull();
 
 		matrixStack.pop();

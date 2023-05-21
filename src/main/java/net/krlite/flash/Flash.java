@@ -15,11 +15,10 @@ import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.ScreenshotRecorder;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
@@ -59,10 +58,10 @@ public class Flash implements ModInitializer {
 	}
 
 	public static class Sounds {
-		public static final SoundEvent CAMERA_SHUTTER = SoundEvent.of(new Identifier(ID, "camera_shutter"));
+		public static final SoundEvent CAMERA_SHUTTER = new SoundEvent(new Identifier(ID, "camera_shutter"));
 
 		static void register() {
-			Registry.register(Registries.SOUND_EVENT, CAMERA_SHUTTER.getId(), CAMERA_SHUTTER);
+			Registry.register(Registry.SOUND_EVENT, CAMERA_SHUTTER.getId(), CAMERA_SHUTTER);
 		}
 
 		public static void playCameraShutter() {
@@ -109,7 +108,7 @@ public class Flash implements ModInitializer {
 
 	public static AccurateColor getBorderColor() {
 		if (MinecraftClient.getInstance().world != null) {
-			Vec3d color = MinecraftClient.getInstance().world.getSkyColor(MinecraftClient.getInstance().gameRenderer.getCamera().getBlockPos().toCenterPos(), 0);
+			Vec3d color = MinecraftClient.getInstance().world.getSkyColor(Vec3d.ofCenter(MinecraftClient.getInstance().gameRenderer.getCamera().getBlockPos()), 0);
 			float[] hsb = Color.RGBtoHSB((int) (color.x * 255), (int) (color.y * 255), (int) (color.z * 255), null);
 			hsb[2] = 1 - hsb[2];
 			return new AccurateColor(Colorspace.HSV, ColorConvertor.floatToDouble(hsb), 1);
