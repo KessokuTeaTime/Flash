@@ -15,15 +15,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class GameRendererMixin {
 	private MatrixStack matrixStack;
 
-	@ModifyArg(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/toast/ToastManager;draw(Lnet/minecraft/client/util/math/MatrixStack;)V"))
+	@ModifyArg(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;render(Lnet/minecraft/client/util/math/MatrixStack;F)V"), index = 0)
 	private MatrixStack getMatrixStack(MatrixStack matrixStack) {
 		this.matrixStack = matrixStack;
 		return matrixStack;
 	}
 
-	@Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;pop()V", shift = At.Shift.AFTER))
+	@Inject(method = "render", at = @At("RETURN"))
 	private void renderScreenshotFlash(float tickDelta, long startTime, boolean tick, CallbackInfo ci) {
-		if (Flash.available()) {
+		if (!MinecraftClient.getInstance().skipGameRender && Flash.available()) {
 			matrixStack.push();
 			matrixStack.translate(MinecraftClient.getInstance().getWindow().getScaledWidth() / 2.0, MinecraftClient.getInstance().getWindow().getScaledHeight() / 2.0, 0);
 
