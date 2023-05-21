@@ -46,7 +46,8 @@ public class FlashRenderer {
 		color(builder, matrix, minWidth / 2 + Flash.BORDER, height / 2 + Flash.BORDER, borderColor);	// Bottom right
 		color(builder, matrix, width / 2 + Flash.BORDER, -(minHeight / 2 + Flash.BORDER), borderColor);	// Top right
 
-		BufferRenderer.drawWithShader(builder.end());
+		builder.end();
+		BufferRenderer.draw(builder);
 
 		RenderSystem.disableCull();
 		RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
@@ -70,7 +71,8 @@ public class FlashRenderer {
 			);	// Right
 		}
 
-		BufferRenderer.drawWithShader(builder.end());
+		builder.end();
+		BufferRenderer.draw(builder);
 		RenderSystem.enableCull();
 
 		matrixStack.pop();

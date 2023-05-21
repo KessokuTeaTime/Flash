@@ -47,7 +47,7 @@ public class Flash implements ModInitializer {
 
 			if (CLEAR.wasPressed()) clear();
 
-			if (client.options.sneakKey.isPressed()) {
+			if (client.options.keySneak.isPressed()) {
 				shrink.speed(MIN_SPEED);
 				drop.speed(MIN_SPEED);
 			} else {
