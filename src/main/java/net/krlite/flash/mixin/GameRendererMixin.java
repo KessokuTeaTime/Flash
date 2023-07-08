@@ -23,7 +23,7 @@ public class GameRendererMixin {
 
 	@Inject(method = "render", at = @At("RETURN"))
 	private void renderScreenshotFlash(float tickDelta, long startTime, boolean tick, CallbackInfo ci) {
-		if (!MinecraftClient.getInstance().skipGameRender && Flash.available()) {
+		if (!MinecraftClient.getInstance().skipGameRender && Flash.available() && matrixStack != null) {
 			matrixStack.push();
 			matrixStack.translate(MinecraftClient.getInstance().getWindow().getScaledWidth() / 2.0, MinecraftClient.getInstance().getWindow().getScaledHeight() / 2.0, 0);
 
