@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.krlite.equator.math.algebra.Theory;
 import net.krlite.equator.visual.color.AccurateColor;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import org.joml.Matrix4f;
@@ -12,7 +13,7 @@ import org.lwjgl.opengl.GL11;
 import java.nio.IntBuffer;
 
 public class FlashRenderer {
-	public static void render(MatrixStack matrixStack, IntBuffer intBuffer) {
+	public static void render(DrawContext context, IntBuffer intBuffer) {
 		AccurateColor textureColor = AccurateColor.WHITE, borderColor = Flash.getBorderColor();
 
 		int textureId = GL11.glGenTextures();
@@ -29,12 +30,12 @@ public class FlashRenderer {
 		float minWidth = width * (float) Theory.lerp(1, Flash.MIN_WIDTH, Flash.shrink()), minHeight = height * (float) Theory.lerp(1, Flash.MIN_HEIGHT, Flash.shrink());
 		float scalar = (float) Theory.lerp(1, Flash.MIN_SCALAR, Flash.shrink());
 
-		matrixStack.push();
-		matrixStack.translate(0, height * Flash.drop(), 0);
-		matrixStack.scale(scalar, scalar, scalar);
+		context.getMatrices().push();
+		context.getMatrices().translate(0, height * Flash.drop(), 0);
+		context.getMatrices().scale(scalar, scalar, scalar);
 
 		BufferBuilder builder = Tessellator.getInstance().getBuffer();
-		Matrix4f matrix = matrixStack.peek().getPositionMatrix();
+		Matrix4f matrix = context.getMatrices().peek().getPositionMatrix();
 
 		// Background
 		RenderSystem.setShader(GameRenderer::getPositionColorProgram);
@@ -73,7 +74,7 @@ public class FlashRenderer {
 		BufferRenderer.drawWithGlobalProgram(builder.end());
 		RenderSystem.enableCull();
 
-		matrixStack.pop();
+		context.getMatrices().pop();
 	}
 
 	private static void textureColor(BufferBuilder builder, Matrix4f matrix, float x, float y, float u, float v, AccurateColor color) {
