@@ -9,7 +9,7 @@
     media="(prefers-color-scheme: dark)"
     srcset="artwork/content/Nightlight.gif?raw=true"
    />
-  <img src="artwork/content/Daylight.gif?raw=true" />
+  <img align="center" src="artwork/content/Daylight.gif?raw=true" />
 </picture>
 
 ## License
