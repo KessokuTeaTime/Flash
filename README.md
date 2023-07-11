@@ -4,6 +4,7 @@
 
 **Flash** adds a flashing animation after every **in-game screenshot** (triggered by `F2`). If you need to, pressing `⌥ Left Alt (Left Option)` can clear the animation instantly.
 
+<br />
 <div align="center">
   <picture>
     <source
@@ -13,6 +14,7 @@
     <img src="artwork/content/Daylight.gif?raw=true" />
   </picture>
 </div>
+<br />
 
 ## License
 
