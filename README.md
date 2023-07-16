@@ -2,16 +2,16 @@
 
 # Flash
 
-**Flash** adds a flashing animation after every **in-game screenshot** (triggered by `F2`). If you need to, pressing `⌥ Left Alt (Left Option)` can clear the animation instantly.
+**Flash** adds a flashing animation after every **in-game screenshot**(triggered by `F2`). If you need to, pressing `⌥ Left Alt (Left Option)` can clear the animation instantly.
 
 <br />
 <div align="center">
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
-      srcset="artwork/content/Nightlight.gif?raw=true"
+      srcset="artwork/content/Night.gif?raw=true"
      />
-    <img src="artwork/content/Daylight.gif?raw=true" />
+    <img src="artwork/content/Day.gif?raw=true" />
   </picture>
 </div>
 <br />
