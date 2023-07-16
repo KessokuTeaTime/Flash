@@ -3,6 +3,7 @@ package net.krlite.flash;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.krlite.equator.math.algebra.Theory;
 import net.krlite.equator.visual.color.AccurateColor;
+import net.krlite.equator.visual.color.Palette;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
@@ -13,7 +14,7 @@ import java.nio.IntBuffer;
 
 public class FlashRenderer {
 	public static void render(MatrixStack matrixStack, IntBuffer intBuffer) {
-		AccurateColor textureColor = AccurateColor.WHITE, borderColor = Flash.getBorderColor();
+		AccurateColor textureColor = Palette.WHITE, borderColor = Flash.getBorderColor();
 
 		int textureId = GL11.glGenTextures();
 
@@ -25,7 +26,7 @@ public class FlashRenderer {
 
 		RenderSystem.enableBlend();
 
-		float width = MinecraftClient.getInstance().getWindow().getScaledWidth(), height = MinecraftClient.getInstance().getWindow().getScaledHeight();
+		float width = MinecraftClient.getInstance().getWindow().getScaledWidth(), height = MinecraftClient.getInstance().getWindow().getScaledHeight() * (float) ( 1 + 1.4 * Flash.drop());
 		float minWidth = width * (float) Theory.lerp(1, Flash.MIN_WIDTH, Flash.shrink()), minHeight = height * (float) Theory.lerp(1, Flash.MIN_HEIGHT, Flash.shrink());
 		float scalar = (float) Theory.lerp(1, Flash.MIN_SCALAR, Flash.shrink());
 

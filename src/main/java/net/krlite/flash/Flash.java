@@ -4,10 +4,11 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.krlite.equator.math.algebra.Curves;
-import net.krlite.equator.visual.animation.Animation;
+import net.krlite.equator.visual.animation.animated.AnimatedDouble;
 import net.krlite.equator.visual.color.AccurateColor;
 import net.krlite.equator.visual.color.ColorConvertor;
 import net.krlite.equator.visual.color.Colorspace;
+import net.krlite.equator.visual.color.Palette;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.option.KeyBinding;
@@ -69,9 +70,9 @@ public class Flash implements ModInitializer {
 		}
 	}
 
-	private static final Animation
-			shrink = new Animation(0, 1, 572, Curves.Exponential.Quintic.OUT),
-			drop = new Animation(0, 1, 620, Curves.TwoBasedExponential.IN);
+	private static final AnimatedDouble
+			shrink = new AnimatedDouble(0, 1, 572, Curves.Exponential.Quintic.OUT),
+			drop = new AnimatedDouble(0, 1, 620, Curves.TwoBasedExponential.IN);
 	private static IntBuffer screenshot = null;
 	private static int width, height;
 
@@ -82,7 +83,7 @@ public class Flash implements ModInitializer {
 	}
 
 	public static boolean available() {
-		return screenshot() != null && (shrink.isRunning() && !shrink.isCompleted() || drop.isRunning() && !drop.isCompleted());
+		return screenshot() != null && (shrink.isPlaying() && !shrink.isCompleted() || drop.isPlaying() && !drop.isCompleted());
 	}
 
 	public static double shrink() {
@@ -113,15 +114,15 @@ public class Flash implements ModInitializer {
 			hsb[2] = 1 - hsb[2];
 			return new AccurateColor(Colorspace.HSV, ColorConvertor.floatToDouble(hsb), 1);
 		}
-		return AccurateColor.WHITE;
+		return Palette.WHITE;
 	}
 
 	public static void screenshot(Framebuffer framebuffer) {
 		screenshot = toIntBuffer(framebuffer);
 		width = framebuffer.textureWidth;
 		height = framebuffer.textureHeight;
-		shrink.restart();
-		drop.restart();
+		shrink.replay();
+		drop.replay();
 	}
 
 	public static void clear() {
