@@ -9,9 +9,9 @@
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
-      srcset="artwork/content/Night.gif?raw=true"
+      srcset="https://github.com/KrLite/Flash/blob/artwork/content/Night.gif?raw=true"
      />
-    <img src="artwork/content/Day.gif?raw=true" />
+    <img src="https://github.com/KrLite/Flash/blob/artwork/content/Day.gif?raw=true" />
   </picture>
 </div>
 <br />
