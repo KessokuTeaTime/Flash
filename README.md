@@ -18,4 +18,4 @@
 
 ## License
 
-This repository is available under the **[GNU Public License.](LICENSE)**
+**Flash** is licensed under the **[GNU General Public License v3.](LICENSE)**
