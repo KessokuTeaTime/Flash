@@ -2,7 +2,7 @@
 
 # Flash
 
-**Flash** adds a flashing animation after every **in-game screenshot**(triggered by `F2`). If you need to, pressing `⌥ Left Alt (Left Option)` can clear the animation instantly.
+**Flash** adds a flashing animation after every **in-game screenshot**(triggered by <kbd>F2</kbd>). If you need to, pressing <kbd>⌥ Left Alt (Left Option)</kbd> can clear the animation instantly.
 
 <br />
 <div align="center">
