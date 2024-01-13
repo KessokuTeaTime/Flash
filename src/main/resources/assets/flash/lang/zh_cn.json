@@ -1,4 +1,7 @@
 {
+  "modmenu.nameTranslation.flash"       : "一闪",
+  "modmenu.descriptionTranslation.flash": "在截图时闪一下屏幕。",
+
   "key.flash.category":	"一闪",
-  "key.flash.clear": 	"清除截图动画"
+  "key.flash.clear": 	"立即清除截图动画"
 }
