@@ -23,9 +23,9 @@ dependencies {
 	mappings(libs.yarn)
 	modImplementation(libs.bundles.fabric)
 
-	modImplementation(libs.bundles.equator)?.let {
-		include(it)
-	}
+	modImplementation(libs.bundles.equator)
+
+	include(libs.bundles.equator)
 }
 
 java {
@@ -45,9 +45,7 @@ tasks {
 	}
 
 	jar {
-		from("LICENSE") {
-			rename { "${it}_${base.archivesName}" }
-		}
+		from("LICENSE")
 	}
 }
 
