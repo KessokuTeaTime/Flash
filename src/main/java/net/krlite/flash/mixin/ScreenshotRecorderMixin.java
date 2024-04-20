@@ -14,7 +14,13 @@ import java.util.function.Consumer;
 
 @Mixin(ScreenshotRecorder.class)
 public abstract class ScreenshotRecorderMixin {
-	@Inject(method = "saveScreenshotInner", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/ScreenshotRecorder;takeScreenshot(Lnet/minecraft/client/gl/Framebuffer;)Lnet/minecraft/client/texture/NativeImage;"))
+	@Inject(
+			method = "saveScreenshotInner",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/client/util/ScreenshotRecorder;takeScreenshot(Lnet/minecraft/client/gl/Framebuffer;)Lnet/minecraft/client/texture/NativeImage;"
+			)
+	)
 	private static void saveScreenshotInner(File gameDirectory, String fileName, Framebuffer framebuffer, Consumer<Text> messageReceiver, CallbackInfo ci) {
 		Flash.Sounds.playCameraShutter();
 		Flash.screenshot(framebuffer);

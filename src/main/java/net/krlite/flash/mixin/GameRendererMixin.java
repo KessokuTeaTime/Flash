@@ -17,13 +17,26 @@ public abstract class GameRendererMixin {
 	@Unique
 	private DrawContext context;
 
-	@ModifyArg(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/toast/ToastManager;draw(Lnet/minecraft/client/gui/DrawContext;)V"))
+	@ModifyArg(
+			method = "render",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/client/toast/ToastManager;draw(Lnet/minecraft/client/gui/DrawContext;)V"
+			)
+	)
 	private DrawContext getMatrixStack(DrawContext context) {
 		this.context = context;
 		return context;
 	}
 
-	@Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;pop()V", shift = At.Shift.AFTER))
+	@Inject(
+			method = "render",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/client/util/math/MatrixStack;pop()V",
+					shift = At.Shift.AFTER
+			)
+	)
 	private void renderScreenshotFlash(float tickDelta, long startTime, boolean tick, CallbackInfo ci) {
 		if (
 				MinecraftClient.getInstance().world != null && MinecraftClient.getInstance().currentScreen == null
