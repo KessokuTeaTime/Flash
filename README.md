@@ -1,4 +1,4 @@
-### <p align=right>[`→` Modrinth](https://modrinth.com/mod/flash)</p>
+### <p align=right>[`→` CurseForge](https://www.curseforge.com/minecraft/mc-mods/screenshot-flash)&ensp;[`→` Modrinth](https://modrinth.com/mod/flash)</p>
 
 # Flash
 
@@ -9,9 +9,9 @@
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
-      srcset="https://github.com/KrLite/Mod.Flash/blob/artwork/content/night.gif?raw=true"
+      srcset="https://github.com/KessokuTeaTime/Flash/blob/artwork/content/night.gif?raw=true"
      />
-    <img src="https://github.com/KrLite/Mod.Flash/blob/artwork/content/day.gif?raw=true" />
+    <img src="https://github.com/KessokuTeaTime/Flash/blob/artwork/content/day.gif?raw=true" />
   </picture>
 </div>
 <br />
