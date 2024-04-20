@@ -17,13 +17,13 @@ yarn = { group = "net.fabricmc", name = "yarn", version.ref = "yarn" }
 fabric-loader = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader" }
 fabric-api = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api" }
 
-equator_animation = { group = "com.github.KrLite.Equator-v2", name = "Animation", version.ref = "equator" }
-equator_visual = { group = "com.github.KrLite.Equator-v2", name = "Visual", version.ref = "equator" }
-equator_math = { group = "com.github.KrLite.Equator-v2", name = "Math", version.ref = "equator" }
+equator-animation = { group = "com.github.KrLite.Equator-v2", name = "Animation", version.ref = "equator" }
+equator-visual = { group = "com.github.KrLite.Equator-v2", name = "Visual", version.ref = "equator" }
+equator-math = { group = "com.github.KrLite.Equator-v2", name = "Math", version.ref = "equator" }
 
 [plugins]
 fabric-loom = { id = "fabric-loom", version.ref = "fabric-loom" }
 
 [bundles]
 fabric = ["fabric-loader", "fabric-api"]
-equator = ["equator_animation", "equator_visual", "equator_math"]
+equator = ["equator-animation", "equator-visual", "equator-math"]
