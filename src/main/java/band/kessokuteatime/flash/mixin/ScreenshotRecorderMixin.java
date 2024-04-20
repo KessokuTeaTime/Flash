@@ -1,6 +1,6 @@
-package net.krlite.flash.mixin;
+package band.kessokuteatime.flash.mixin;
 
-import net.krlite.flash.Flash;
+import band.kessokuteatime.flash.Flash;
 import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.util.ScreenshotRecorder;
 import net.minecraft.text.Text;

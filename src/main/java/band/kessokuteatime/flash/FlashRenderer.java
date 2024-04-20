@@ -1,4 +1,4 @@
-package net.krlite.flash;
+package band.kessokuteatime.flash;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.krlite.equator.math.algebra.Theory;

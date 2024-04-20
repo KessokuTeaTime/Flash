@@ -1,13 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.krlite.flash.mixin",
+  "package": "band.kessokuteatime.flash.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
   ],
   "client": [
-	"GameRendererMixin",
-	"ScreenshotRecorderMixin"
+	  "GameRendererMixin",
+	  "ScreenshotRecorderMixin"
   ],
   "injectors": {
 	"defaultRequire": 0

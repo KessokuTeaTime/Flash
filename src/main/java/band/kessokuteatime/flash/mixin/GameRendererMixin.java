@@ -1,7 +1,7 @@
-package net.krlite.flash.mixin;
+package band.kessokuteatime.flash.mixin;
 
-import net.krlite.flash.Flash;
-import net.krlite.flash.FlashRenderer;
+import band.kessokuteatime.flash.FlashRenderer;
+import band.kessokuteatime.flash.Flash;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.GameRenderer;

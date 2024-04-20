@@ -1,5 +1,6 @@
-package net.krlite.flash;
+package band.kessokuteatime.flash;
 
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -30,7 +31,7 @@ import java.awt.*;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
-public class Flash implements ModInitializer {
+public class Flash implements ClientModInitializer {
 	public static final String NAME = "Flash", ID = "flash";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ID);
 	public static final double MIN_WIDTH = 0.764, MIN_HEIGHT = 0.672, MIN_SCALAR = 0.875;
@@ -78,7 +79,7 @@ public class Flash implements ModInitializer {
 	private static int width, height;
 
 	@Override
-	public void onInitialize() {
+	public void onInitializeClient() {
 		ClientTickEvents.END_CLIENT_TICK.register(Input::listenInput);
 		Sounds.register();
 	}

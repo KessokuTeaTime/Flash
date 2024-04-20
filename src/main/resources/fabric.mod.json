@@ -3,15 +3,16 @@
   "id": "flash",
   "version": "${version}",
 
-  "name": "Flash",
+  "name": "${display.name}",
   "description": "Flashes as you take a screenshot.",
   "authors": [
+    "KessokuTeaTime",
     "KrLite"
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/flash",
-    "sources": "https://github.com/KrLite/Mod.Flash",
-    "issues": "https://github.com/KrLite/Mod.Flash/issues"
+    "sources": "https://github.com/KessokuTeaTime/Flash",
+    "issues": "https://github.com/KessokuTeaTime/Flash/issues"
   },
 
   "license": "GPL-3.0",
@@ -19,8 +20,8 @@
 
   "environment": "client",
   "entrypoints": {
-    "main": [
-      "net.krlite.flash.Flash"
+    "client": [
+      "band.kessokuteatime.flash.Flash"
     ]
   },
   "mixins": [
