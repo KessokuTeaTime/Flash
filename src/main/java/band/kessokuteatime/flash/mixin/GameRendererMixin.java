@@ -33,7 +33,7 @@ public abstract class GameRendererMixin {
 			method = "render",
 			at = @At(
 					value = "INVOKE",
-					target = "Lnet/minecraft/client/util/math/MatrixStack;pop()V",
+					target = "Lorg/joml/Matrix4fStack;popMatrix()Lorg/joml/Matrix4fStack;",
 					shift = At.Shift.AFTER
 			)
 	)
