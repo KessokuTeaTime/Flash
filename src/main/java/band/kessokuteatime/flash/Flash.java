@@ -61,7 +61,7 @@ public class Flash implements ClientModInitializer {
 	}
 
 	public static class Sounds {
-		public static final SoundEvent CAMERA_SHUTTER = SoundEvent.of(new Identifier(ID, "camera_shutter"));
+		public static final SoundEvent CAMERA_SHUTTER = SoundEvent.of(Identifier.of(ID, "camera_shutter"));
 
 		static void register() {
 			Registry.register(Registries.SOUND_EVENT, CAMERA_SHUTTER.getId(), CAMERA_SHUTTER);

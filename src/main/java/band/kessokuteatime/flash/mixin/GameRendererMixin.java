@@ -5,6 +5,7 @@ import band.kessokuteatime.flash.Flash;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.GameRenderer;
+import net.minecraft.client.render.RenderTickCounter;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -37,7 +38,7 @@ public abstract class GameRendererMixin {
 					shift = At.Shift.AFTER
 			)
 	)
-	private void renderScreenshotFlash(float tickDelta, long startTime, boolean tick, CallbackInfo ci) {
+	private void renderScreenshotFlash(RenderTickCounter renderTickCounter, boolean bl, CallbackInfo ci) {
 		if (
 				MinecraftClient.getInstance().world != null && MinecraftClient.getInstance().currentScreen == null
 						&& !MinecraftClient.getInstance().skipGameRender

@@ -34,13 +34,12 @@ public class FlashRenderer {
 		context.getMatrices().translate(0, height * Flash.drop(), 0);
 		context.getMatrices().scale(scalar, scalar, scalar);
 
-		BufferBuilder builder = Tessellator.getInstance().getBuffer();
 		Matrix4f matrix = context.getMatrices().peek().getPositionMatrix();
 
 		// Background
 		RenderSystem.setShader(GameRenderer::getPositionColorProgram);
 
-		builder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
+		BufferBuilder builder = Tessellator.getInstance().begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
 
 		color(builder, matrix, -(width / 2 + Flash.BORDER), -(minHeight / 2 + Flash.BORDER), borderColor);	// Top left
 		color(builder, matrix, -(minWidth / 2 + Flash.BORDER), height / 2 + Flash.BORDER, borderColor);	// Bottom left
@@ -53,7 +52,7 @@ public class FlashRenderer {
 		RenderSystem.setShader(GameRenderer::getPositionTexColorProgram);
 		RenderSystem.setShaderTexture(0, textureId);
 
-		builder.begin(VertexFormat.DrawMode.TRIANGLE_STRIP, VertexFormats.POSITION_TEXTURE_COLOR);
+		builder = Tessellator.getInstance().begin(VertexFormat.DrawMode.TRIANGLE_STRIP, VertexFormats.POSITION_TEXTURE_COLOR);
 
 		for (int y = 0; y < height; y++) {
 			textureColor(
@@ -78,10 +77,10 @@ public class FlashRenderer {
 	}
 
 	private static void textureColor(BufferBuilder builder, Matrix4f matrix, float x, float y, float u, float v, AccurateColor color) {
-		builder.vertex(matrix, x, y, 0).texture(u, v).color(color.redAsFloat(), color.greenAsFloat(), color.blueAsFloat(), color.opacityAsFloat()).next();
+		builder.vertex(matrix, x, y, 0).texture(u, v).color(color.redAsFloat(), color.greenAsFloat(), color.blueAsFloat(), color.opacityAsFloat());
 	}
 
 	private static void color(BufferBuilder builder, Matrix4f matrix, float x, float y, AccurateColor color) {
-		builder.vertex(matrix, x, y, 0).color(color.redAsFloat(), color.greenAsFloat(), color.blueAsFloat(), color.opacityAsFloat()).next();
+		builder.vertex(matrix, x, y, 0).color(color.redAsFloat(), color.greenAsFloat(), color.blueAsFloat(), color.opacityAsFloat());
 	}
 }
