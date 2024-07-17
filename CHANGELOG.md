@@ -1,3 +1,3 @@
 ### Maintenance Update
 
-- **Supported** `1.20.5+`.
+- **Use** fully semantic versioning.
