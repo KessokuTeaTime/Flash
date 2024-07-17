@@ -3,7 +3,7 @@
   "id": "flash",
   "version": "${version}",
 
-  "name": "${display.name}",
+  "name": "${display.name.get()}",
   "description": "Flashes as you take a screenshot.",
   "authors": [
     "KessokuTeaTime",
