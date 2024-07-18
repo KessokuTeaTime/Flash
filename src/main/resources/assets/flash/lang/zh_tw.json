@@ -1,0 +1,7 @@
+{
+  "modmenu.nameTranslation.flash"       : "閃一下",
+  "modmenu.descriptionTranslation.flash": "在擷圖時閃一下畫面／螢幕。",
+
+  "key.flash.category":	"閃一下",
+  "key.flash.clear": 	"立即清除擷圖動畫"
+}
